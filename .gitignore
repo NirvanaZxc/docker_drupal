@@ -2,3 +2,4 @@
 .idea/
 .docker-sync/
 vendor/
+config/environments/local
