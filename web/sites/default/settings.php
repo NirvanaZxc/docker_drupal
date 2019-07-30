@@ -796,3 +796,9 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 if (file_exists($app_root . '/' . $site_path . '/settings.prod.php')) {
     include $app_root . '/' . $site_path . '/settings.prod.php';
 }
+
+$settings['trusted_host_patterns'] = [
+    '^www\.intermagasin\.com$',
+    '^intermagasin\.com$',
+    'drupal.docker.localhost'
+];
