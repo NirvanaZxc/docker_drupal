@@ -1,0 +1,10 @@
+mapping:
+  title: title
+  address: field_address
+  description: body
+  horaire: field_horaire
+  image: field_main_image
+  price: field_price
+  phone: field_tel
+  transport: field_transport
+  slide: field_slide_image

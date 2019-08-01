@@ -1,0 +1,12 @@
+defaultEntryPoints = ["http"]
+logLevel = "ERROR"
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "${PROJECT_BASE_URL}"
+watch = true
+exposedByDefault = false

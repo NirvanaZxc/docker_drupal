@@ -1,0 +1,7 @@
+services:
+  fg_rest_api.node_entity_normalizer:
+    class: Drupal\fg_rest_api\Normalizer\Entity\NodeEntityNormalizer
+    arguments:
+      - '@entity_type.manager'
+    tags:
+      - { name: normalizer, priority: 10 }

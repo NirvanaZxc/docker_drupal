@@ -1,0 +1,20 @@
+id: fg_resource
+plugin_id: fg_resource
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - basic_auth
+
+
+id: fg_resource_list
+plugin_id: fg_resource_list
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - basic_auth
