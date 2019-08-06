@@ -5,7 +5,6 @@ namespace Drupal\fg_rest_api\Plugin\rest\resource;
 use Drupal\Core\Cache\CacheableResponseInterface;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
-use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
 use Drupal\rest\Plugin\ResourceBase;;
 

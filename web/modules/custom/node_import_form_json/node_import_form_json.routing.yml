@@ -1,0 +1,7 @@
+node_import_form_json.query_form:
+  path: '/json-upload-form'
+  defaults:
+    _form: '\Drupal\node_import_form_json\Form\JsonUploadForm'
+    _title: 'Json Upload Form'
+  requirements:
+    _permission: 'access content'

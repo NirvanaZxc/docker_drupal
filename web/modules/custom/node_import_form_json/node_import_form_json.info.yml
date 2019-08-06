@@ -1,0 +1,5 @@
+name: Fg Import node API
+description: Import josn data into node
+package: Custom
+type: module
+core: 8.x

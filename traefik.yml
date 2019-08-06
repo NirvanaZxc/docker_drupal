@@ -16,7 +16,7 @@ services:
 
 networks:
   project1:
-    external: 
+    external:
       name: project1-dir_default
   project2:
     external:

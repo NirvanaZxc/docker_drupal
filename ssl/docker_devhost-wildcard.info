@@ -1,0 +1,58 @@
+SHA1 Fingerprint=2D:27:E0:D7:D2:EC:88:19:6A:9A:85:4B:36:98:D5:15:5A:CD:68:54
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 10636982992396812546 (0x939e27aca7af0102)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=FR, ST=Bretagne, L=Rennes, O=Niji, OU=WF, CN=*.docker.devhost/emailAddress=anas.ameziane@niji.fr
+        Validity
+            Not Before: Feb  9 15:16:46 2018 GMT
+            Not After : Feb  7 15:16:46 2028 GMT
+        Subject: C=FR, ST=Bretagne, L=Rennes, O=Niji, OU=WF, CN=*.docker.devhost/emailAddress=anas.ameziane@niji.fr
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:e4:0d:68:f3:b5:4c:5e:d1:34:0e:e0:d8:87:e5:
+                    45:3a:50:5c:06:9e:4d:b0:2c:7c:4c:f6:4f:3a:41:
+                    4f:94:2d:8e:e8:28:1e:01:8d:43:18:e9:57:c7:e8:
+                    8a:d0:b8:15:b0:68:ea:47:42:e1:65:f1:f1:36:5b:
+                    1a:5a:cb:0d:e5:f0:ef:ae:5f:4a:f2:78:83:37:2c:
+                    ba:64:f2:3b:e2:5b:3b:fc:1e:41:26:06:6b:4e:4d:
+                    75:b8:e9:4f:15:fd:82:ce:94:83:0b:2f:cf:cd:b1:
+                    1b:93:81:be:8b:95:b9:2f:3e:fa:66:97:3e:c2:13:
+                    fd:bf:9c:ec:3d:0a:bb:f3:ec:28:ae:48:fc:5f:eb:
+                    5e:d4:b8:f0:19:c1:16:8b:88:ca:93:c6:8f:10:63:
+                    7e:93:97:1d:64:9c:cc:1d:b7:c9:fb:0e:fe:aa:ef:
+                    a0:a7:8e:82:cc:b1:dd:5c:da:12:1d:42:e8:a9:d6:
+                    f6:13:c6:4a:85:4d:6c:22:18:bd:0f:38:c0:ad:9d:
+                    96:8b:ef:d9:6e:a3:6f:fc:1e:a3:b8:71:29:ec:c3:
+                    26:53:00:e4:31:98:83:a4:5a:f2:65:56:6e:82:d2:
+                    55:81:3b:23:14:f5:f7:f4:1b:44:ed:b2:bc:5f:f3:
+                    2c:39:c4:f5:61:ab:9a:a2:ba:ac:df:ff:06:2a:7a:
+                    b7:5b
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier: 
+                7C:2F:9E:82:04:48:24:3A:70:94:E8:8A:51:E9:AA:0F:60:D2:C0:98
+            X509v3 Authority Key Identifier: 
+                keyid:7C:2F:9E:82:04:48:24:3A:70:94:E8:8A:51:E9:AA:0F:60:D2:C0:98
+
+            X509v3 Basic Constraints: 
+                CA:TRUE
+    Signature Algorithm: sha1WithRSAEncryption
+         1f:10:ab:32:4f:0c:a3:4f:38:72:b9:9e:b0:55:3e:72:b0:c2:
+         e9:44:6e:17:68:7e:1f:18:47:3a:ee:e0:f8:80:d4:2e:c8:c2:
+         ba:de:99:45:65:2f:2a:03:84:c9:b9:f2:c6:de:c0:45:46:b7:
+         e3:46:a9:2e:bb:e7:66:dc:34:3a:10:ce:34:7a:ac:31:45:f3:
+         8e:00:47:4a:90:bc:88:2d:71:75:e6:9b:fb:cb:31:fd:76:99:
+         97:a6:52:9b:21:d0:41:e6:fa:63:85:b9:76:fb:e6:b0:59:14:
+         7b:b0:cc:cb:c6:ad:ed:56:2e:0b:2f:b4:5a:e7:e6:a4:03:72:
+         cc:e7:5d:76:d4:a5:5b:4c:c0:52:75:60:64:95:c7:d6:7b:90:
+         a5:c3:c8:a7:d4:35:9e:0f:3a:eb:d6:b4:b4:41:19:b6:4b:fb:
+         2f:67:19:d1:dc:8c:be:ab:81:69:63:98:fa:04:76:ad:e3:de:
+         f0:4e:03:61:7b:0e:27:0b:b2:ce:e4:a7:04:7c:27:11:45:a6:
+         c3:f6:4b:19:08:a3:ea:f8:3b:c4:c0:ca:81:73:ad:48:29:85:
+         6a:0b:5d:16:46:23:c0:ca:66:44:41:58:ab:77:fc:be:30:15:
+         b8:4e:3f:06:9e:84:f7:d5:98:84:c1:25:fb:4b:9d:71:d9:cb:
+         73:ea:3b:47
