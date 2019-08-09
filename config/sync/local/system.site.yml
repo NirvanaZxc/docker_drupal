@@ -1,0 +1,14 @@
+uuid: 55d89709-78f7-4855-8e5e-8db321625068
+name: 法国信息网
+mail: fgxx@gamil.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

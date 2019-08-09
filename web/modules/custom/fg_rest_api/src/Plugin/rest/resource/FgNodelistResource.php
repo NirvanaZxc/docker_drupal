@@ -57,7 +57,7 @@ class FgNodelistResource extends ResourceBase
                         $objImage = File::load($restaurant->field_main_image->target_id);
                         $data[$key]['id'] = $restaurant->nid->value;
                         $data[$key]['title'] = $restaurant->title->value;
-                        $data[$key]['teaser'] = substr($restaurant->body->summary, 0 ,32);
+                        $data[$key]['teaser'] = rtrim($restaurant->field_tag->value, "," );
                         $data[$key]['image'] = ImageStyle::load('moblie_list')->buildUrl($objImage->getFileUri());
                     }
                 }

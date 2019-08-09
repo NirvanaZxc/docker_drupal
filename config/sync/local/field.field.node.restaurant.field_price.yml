@@ -1,0 +1,21 @@
+uuid: 545250c1-979f-43f9-8df2-45485a9fd69b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price
+    - node.type.restaurant
+  module:
+    - text
+id: node.restaurant.field_price
+field_name: field_price
+entity_type: node
+bundle: restaurant
+label: price
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

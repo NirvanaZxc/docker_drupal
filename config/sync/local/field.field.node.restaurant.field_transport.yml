@@ -1,0 +1,21 @@
+uuid: 61700255-b5f8-4105-9439-11b45a8ba7d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_transport
+    - node.type.restaurant
+  module:
+    - text
+id: node.restaurant.field_transport
+field_name: field_transport
+entity_type: node
+bundle: restaurant
+label: transport
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

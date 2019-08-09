@@ -1,0 +1,21 @@
+uuid: 46ab09e6-6810-42e2-b62f-014610a21d6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_horaire
+    - node.type.restaurant
+  module:
+    - text
+id: node.restaurant.field_horaire
+field_name: field_horaire
+entity_type: node
+bundle: restaurant
+label: horaire
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

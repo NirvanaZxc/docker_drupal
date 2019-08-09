@@ -38,6 +38,10 @@ class FgGetCatResource extends ResourceBase
             ->execute();
         $taxs = Term::loadMultiple($entitieIds);
         if (!empty($taxs)) {
+            $data[0] = array(
+                'id' => 0,
+                'name' => t('全部')
+            );
             foreach ($taxs as $key => $tax) {
                 $data[] = array(
                     'id' => $tax->tid->value,

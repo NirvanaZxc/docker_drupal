@@ -77,6 +77,7 @@ class JsonUploadEventBase extends QueueWorkerBase implements ContainerFactoryPlu
                     'field_slide_image' => $slides[$key],
                     'field_tel' => $value['Tel'],
                     'field_transport' => $value['Transport'],
+                    'field_tag' => $value['Tags'],
                 )
             );
 

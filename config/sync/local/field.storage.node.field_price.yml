@@ -1,0 +1,20 @@
+uuid: fd37f5f1-fa67-4c2b-bf41-6944b5f6de33
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_price
+field_name: field_price
+entity_type: node
+type: text
+settings:
+  max_length: 16
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
