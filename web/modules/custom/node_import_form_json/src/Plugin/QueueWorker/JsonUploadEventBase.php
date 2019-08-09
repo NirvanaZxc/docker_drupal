@@ -48,14 +48,18 @@ class JsonUploadEventBase extends QueueWorkerBase implements ContainerFactoryPlu
             // Create file object from remote URL.
             $mainImage =  drupal_get_path('module', 'node_import_form_json') . '/jsondata/' .$value['SkuId']. '/' .$value['MainImage'];
             $data = file_get_contents($mainImage);
-            $file = file_save_data($data, 'public://images/'.basename($mainImage));
+            $file = file_save_data($data, 'public://'.basename($mainImage), FILE_EXISTS_REPLACE);
 
             if (!empty($value['DishImages'])){
                 foreach ($value['DishImages'] as $dishImage) {
                     $itemImage =  drupal_get_path('module', 'node_import_form_json') . '/jsondata/' .$value['SkuId']. '/' .$dishImage['Name'];
                     $dataImage = file_get_contents($itemImage);
-                    $fileImage = file_save_data($dataImage, 'public://images/'.basename($itemImage));
-                    $slides[$key][] =  array('target_id' => $fileImage->id(),'alt' => $dishImage['Description'], 'title' => $dishImage['Price']);
+
+                    $fileImage = file_save_data($dataImage, 'public://'.basename($itemImage));
+
+                    if($fileImage->id()){
+                        $slides[$key][] =  array('target_id' => $fileImage->id(),'alt' => $dishImage['Description'], 'title' => $dishImage['Price']);
+                    }
                 }
             }
 
