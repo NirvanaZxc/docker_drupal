@@ -39,21 +39,30 @@ class FgNodelistResource extends ResourceBase
             $offset = \Drupal::request()->get('pageIndex');
             $limit = \Drupal::request()->get('pageSize');
 
+            $cat = \Drupal::request()->get('category');
+
+            if(empty($cat)){
+              $cat = [0,1,2,3,4,5];
+            }
+            else{
+              $cat = [$cat];
+            }
             $query = \Drupal::entityQuery('node');
             $entitieIds = $query->condition('type', $bundle)
-                ->condition('status', 1)  // Only return the newest 10 articles
+                ->condition('status', 1)
+                ->condition('field_category', $cat, 'IN')
                 ->sort('created', 'DESC')
                 ->range($offset, $limit)
                 ->execute();
 
             ######pass total#########
-
-            $entitieTotal = $query->condition('type', $bundle)
-            ->condition('status', 1)  // Only return the newest 10 articles
-            ->count()
-            ->execute();
-
-            $headers = ['X-Total-Count' => $entitieTotal];
+            $queryTotal = \Drupal::entityQuery('node');
+            $entitieTotal = $queryTotal->condition('type', $bundle)
+              ->condition('status', 1)
+              ->condition('field_category', $cat, 'IN')
+              ->sort('created', 'DESC')
+              ->count()
+              ->execute();
 
             $entities = Node::loadMultiple($entitieIds);
             if (!empty($entities)) {
@@ -73,7 +82,8 @@ class FgNodelistResource extends ResourceBase
                     $new[] = $value;
                 }
 
-                $response = new ResourceResponse($new, $status = 200, $headers);
+                $response = new ResourceResponse($new);
+                $response->headers->set('X-Total-Count', $entitieTotal);
                 if ($response instanceof CacheableResponseInterface) {
                     $response->addCacheableDependency($new);
                 }
