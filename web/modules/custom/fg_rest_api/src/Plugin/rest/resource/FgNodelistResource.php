@@ -25,18 +25,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class FgNodelistResource extends ResourceBase
 {
-    /**
-     * Responds to GET requests.
-     *
-     * Returns a list of bundles for specified entity.
-     *
-     * @param $bundle
-     * @return \Drupal\rest\ResourceResponse
-     *   The HTTP response object.
-     *
-     * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-     * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-     */
+  /**
+   * Responds to GET requests.
+   *
+   * Returns a list of bundles for specified entity.
+   * @param $bundle
+   * @return \Drupal\rest\ResourceResponse
+   *   The HTTP response object.
+   */
     public function get($bundle)
     {
         if($bundle) {
@@ -49,6 +45,16 @@ class FgNodelistResource extends ResourceBase
                 ->sort('created', 'DESC')
                 ->range($offset, $limit)
                 ->execute();
+
+            ######pass total#########
+
+            $entitieTotal = $query->condition('type', $bundle)
+            ->condition('status', 1)  // Only return the newest 10 articles
+            ->count()
+            ->execute();
+
+            $headers = ['X-Total-Count' => $entitieTotal];
+
             $entities = Node::loadMultiple($entitieIds);
             if (!empty($entities)) {
                 $data = [];
@@ -67,7 +73,7 @@ class FgNodelistResource extends ResourceBase
                     $new[] = $value;
                 }
 
-                $response = new ResourceResponse($new);
+                $response = new ResourceResponse($new, $status = 200, $headers);
                 if ($response instanceof CacheableResponseInterface) {
                     $response->addCacheableDependency($new);
                 }

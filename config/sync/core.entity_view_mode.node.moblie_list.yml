@@ -1,0 +1,10 @@
+uuid: 56bc8762-8cca-4cba-a497-5902f2dd5d89
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.moblie_list
+label: 'moblie list'
+targetEntityType: node
+cache: true

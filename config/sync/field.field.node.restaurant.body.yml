@@ -1,0 +1,22 @@
+uuid: 40e63349-3121-44aa-ab45-482648e7a7d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.restaurant
+  module:
+    - text
+id: node.restaurant.body
+field_name: body
+entity_type: node
+bundle: restaurant
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

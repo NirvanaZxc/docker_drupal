@@ -1,0 +1,15 @@
+uuid: 6ac6dba1-12cb-40a9-80e0-6b1e94e01dd5
+langcode: en
+status: true
+dependencies: {  }
+name: moblie_list
+label: 'moblie list'
+effects:
+  785fb245-1dd4-44eb-a76c-6960dcdbcf78:
+    uuid: 785fb245-1dd4-44eb-a76c-6960dcdbcf78
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 732
+      height: 412
+      anchor: center-center

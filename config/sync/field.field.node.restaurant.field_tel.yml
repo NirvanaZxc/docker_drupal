@@ -1,0 +1,19 @@
+uuid: 91b6c9c3-f49d-413a-a678-f5c6629db41d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tel
+    - node.type.restaurant
+id: node.restaurant.field_tel
+field_name: field_tel
+entity_type: node
+bundle: restaurant
+label: tel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 5180a633-3577-4bb9-90d4-4ed6a7769e56
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - fg_rest_api
+    - serialization
+_core:
+  default_config_hash: bjvpZBdFqOv8HMPPr0nGQdqmPzRoQRDU6ncLkfoHkf8
+id: fg_resource_list
+plugin_id: fg_resource_list
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - basic_auth

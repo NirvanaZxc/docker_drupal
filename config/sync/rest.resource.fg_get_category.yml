@@ -1,0 +1,17 @@
+uuid: d5a888b5-46a0-4505-91d0-e13ab28f04df
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - fg_rest_api
+    - serialization
+id: fg_get_category
+plugin_id: fg_get_category
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - basic_auth

@@ -1,0 +1,17 @@
+uuid: ec87d01d-73d6-4b63-9d54-7212722189f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - fg_rest_api
+    - serialization
+id: fg_resource
+plugin_id: fg_resource
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - basic_auth
