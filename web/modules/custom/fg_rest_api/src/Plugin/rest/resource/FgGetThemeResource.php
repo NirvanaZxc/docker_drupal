@@ -2,9 +2,7 @@
 namespace Drupal\fg_rest_api\Plugin\rest\resource;
 
 use Drupal\Core\Cache\CacheableResponseInterface;
-use Drupal\file\Entity\File;
 use Drupal\rest\Plugin\ResourceBase;;
-
 use Drupal\rest\ResourceResponse;
 use Drupal\taxonomy\Entity\Term;
 
@@ -39,11 +37,10 @@ class FgGetThemeResource extends ResourceBase
     $taxs = Term::loadMultiple($entitieIds);
     if (!empty($taxs)) {
       foreach ($taxs as $key => $tax) {
-        $objImage = File::load($tax->field_logo->target_id);
         $data[] = array(
           'name' => $tax->name->value,
           'id' => $tax->field_cible->value,
-          'icon' => $objImage->getFileUri()
+          'icon' => strip_tags($tax->description->value),
         );
       }
       /** @var array $data */

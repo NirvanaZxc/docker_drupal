@@ -7,10 +7,7 @@ use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
 use Drupal\rest\Plugin\ResourceBase;;
-
 use Drupal\rest\ResourceResponse;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a Demo Resource
