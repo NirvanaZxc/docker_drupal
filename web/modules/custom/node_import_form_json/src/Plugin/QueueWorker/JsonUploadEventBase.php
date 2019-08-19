@@ -63,7 +63,13 @@ class JsonUploadEventBase extends QueueWorkerBase implements ContainerFactoryPlu
                 }
             }
 
-            $node = Node::create(array(
+            if(!empty($value['Tags'])){
+             $cat = $this->switchCategory($value['Tags']);
+            }
+
+          /** @var TYPE_NAME $cat */
+          /** @var TYPE_NAME $slides */
+          $node = Node::create(array(
                     'type' => 'restaurant',
                     'langcode' => 'en',
                     'uid' => '1',
@@ -78,10 +84,34 @@ class JsonUploadEventBase extends QueueWorkerBase implements ContainerFactoryPlu
                     'field_tel' => $value['Tel'],
                     'field_transport' => $value['Transport'],
                     'field_tag' => $value['Tags'],
+                    'field_category' => array(
+                      array( 'target_id' => $cat ),
+                    ),
                 )
             );
 
             $node->save();
         }
+    }
+
+    private function switchCategory($string){
+      if(strpos($string, '日')){
+        return 3;
+      }
+      elseif(strpos($string, '意')){
+        return 4;
+      }
+      elseif(strpos($string, '泰')){
+        return 15;
+      }
+      elseif(strpos($string, '韩')){
+        return 5;
+      }
+      elseif(strpos($string, '法')){
+        return 2;
+      }
+      else{
+        return 1;
+      }
     }
 }

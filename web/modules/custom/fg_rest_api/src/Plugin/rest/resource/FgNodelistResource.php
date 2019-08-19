@@ -39,7 +39,10 @@ class FgNodelistResource extends ResourceBase
             $cat = \Drupal::request()->get('category');
 
             if(empty($cat)){
-              $cat = [0,1,2,3,4,5];
+              $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('tags');
+              foreach ($terms as $term) {
+                $cat[] = $term->tid;
+              }
             }
             else{
               $cat = [$cat];
