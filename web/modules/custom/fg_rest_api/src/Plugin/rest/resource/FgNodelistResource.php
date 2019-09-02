@@ -29,6 +29,8 @@ class FgNodelistResource extends ResourceBase
    * @param $bundle
    * @return \Drupal\rest\ResourceResponse
    *   The HTTP response object.
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
     public function get($bundle)
     {
@@ -38,57 +40,97 @@ class FgNodelistResource extends ResourceBase
 
             $cat = \Drupal::request()->get('category');
 
-            if(empty($cat)){
-              $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('tags');
-              foreach ($terms as $term) {
-                $cat[] = $term->tid;
+            if(!$cat){
+              if($bundle == 'restaurant'){
+                $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('tags');
+                foreach ($terms as $term) {
+                  $cats[] = $term->tid;
+                }
               }
+              elseif($bundle == 'book'){
+                $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('book');
+                foreach ($terms as $term) {
+                  $cats[] = $term->tid;
+                }
+              }
+
             }
             else{
-              $cat = [$cat];
+              $cats = [$cat];
             }
-            $query = \Drupal::entityQuery('node');
-            $entitieIds = $query->condition('type', $bundle)
+
+
+            if($bundle == 'restaurant') {
+              $query = \Drupal::entityQuery('node');
+              $entitieIds = $query->condition('type', $bundle)
                 ->condition('status', 1)
-                ->condition('field_category', $cat, 'IN')
+                ->condition('field_category', $cats, 'IN')
                 ->sort('created', 'DESC')
                 ->range($offset, $limit)
                 ->execute();
-
-            ######pass total#########
-            $queryTotal = \Drupal::entityQuery('node');
-            $entitieTotal = $queryTotal->condition('type', $bundle)
-              ->condition('status', 1)
-              ->condition('field_category', $cat, 'IN')
-              ->sort('created', 'DESC')
-              ->count()
-              ->execute();
-
-            $entities = Node::loadMultiple($entitieIds);
-            if (!empty($entities)) {
-                $data = [];
-                foreach ($entities as $key => $restaurant) {
-                    if (!empty($restaurant)) {
-                        $objImage = File::load($restaurant->field_main_image->target_id);
-                        $data[$key]['id'] = $restaurant->nid->value;
-                        $data[$key]['title'] = $restaurant->title->value;
-                        $data[$key]['teaser'] = rtrim($restaurant->field_tag->value, "," );
-                        $data[$key]['image'] = ImageStyle::load('moblie_list')->buildUrl($objImage->getFileUri());
-                    }
-                }
-
-                $new = array();
-                foreach ($data as $key => $value){
-                    $new[] = $value;
-                }
-
-                $response = new ResourceResponse($new);
-                $response->headers->set('X-Total-Count', $entitieTotal);
-                if ($response instanceof CacheableResponseInterface) {
-                    $response->addCacheableDependency($new);
-                }
+              ######pass total#########
+              $queryTotal = \Drupal::entityQuery('node');
+              $entitieTotal = $queryTotal->condition('type', $bundle)
+                ->condition('status', 1)
+                ->condition('field_category', $cats, 'IN')
+                ->sort('created', 'DESC')
+                ->count()
+                ->execute();
             }
+            elseif($bundle == 'book'){
+              $query = \Drupal::entityQuery('node');
+              $entitieIds = $query->condition('type', $bundle)
+                ->condition('status', 1)
+                ->condition('field_category_book', $cats, 'IN')
+                ->sort('created', 'DESC')
+                ->range($offset, $limit)
+                ->execute();
+              ######pass total#########
+              $queryTotal = \Drupal::entityQuery('node');
+              $entitieTotal = $queryTotal->condition('type', $bundle)
+                ->condition('status', 1)
+                ->condition('field_category_book', $cats, 'IN')
+                ->sort('created', 'DESC')
+                ->count()
+                ->execute();
+            }
+            if(!empty($entitieIds)){
+              $entities = Node::loadMultiple($entitieIds);
+              $data = [];
+              foreach ($entities as $key => $entite) {
+                if (!empty($entite)) {
+                  $objImage = File::load($entite->field_main_image->target_id);
+                  $data[$key]['id'] = $entite->nid->value;
+                  $data[$key]['title'] = $entite->title->value;
+                  if($bundle == 'restaurant'){
+                    $data[$key]['teaser'] = rtrim($entite->field_tag->value, "," );
+                  }
+                  elseif($bundle == 'book')
+                  {
+                    $data[$key]['teaser'] = $entite->field_rate->value;
+                  }
+                  $data[$key]['image'] = ImageStyle::load('moblie_list')->buildUrl($objImage->getFileUri());
+                }
+              }
 
+              $new = array();
+              foreach ($data as $key => $value){
+                $new[] = $value;
+              }
+              $response = new ResourceResponse($new);
+              $response->headers->set('X-Total-Count', $entitieTotal);
+              if ($response instanceof CacheableResponseInterface) {
+                $response->addCacheableDependency($new);
+              }
+            }
+            else{
+              $new = array('message' => '请见谅,目前还没有您想搜索的数据');
+              $response = new ResourceResponse($new);
+              $response->headers->set('X-Total-Count', $entitieTotal);
+              if ($response instanceof CacheableResponseInterface) {
+                $response->addCacheableDependency($new);
+              }
+            }
         }
         return $response;
     }

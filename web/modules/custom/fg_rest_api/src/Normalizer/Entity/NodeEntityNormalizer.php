@@ -29,6 +29,11 @@ class NodeEntityNormalizer extends FGNormalizer {
                 }
 
                 break;
+          case 'book':
+                if (array_search('field_main_image', $this->fieldMapping['mapping'])) {
+                  $data['image'] = $this->serializer->normalize($object->get('field_main_image'), $format);
+                }
+                break;
         }
 
         if (isset($context['view_mode'])) {

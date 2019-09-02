@@ -1,0 +1,9 @@
+mapping:
+  title: title
+  author: field_author
+  description: body
+  authorintroduction: field_authorintroduction
+  image: field_main_image
+  format: field_format
+  rate: field_rate
+  url: field_url
